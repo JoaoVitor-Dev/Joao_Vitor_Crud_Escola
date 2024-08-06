@@ -1,14 +1,12 @@
-package com.example.joao_vitor_crud_room;
+package com.example.joao_vitor_crud_room.view;
 
 import android.os.Bundle;
 
 import android.util.Log;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.room.Room;
+import com.example.joao_vitor_crud_room.R;
 import com.example.joao_vitor_crud_room.dao.AllDao;
 import com.example.joao_vitor_crud_room.dao.StudentAndSchoolAndClass;
 import com.example.joao_vitor_crud_room.dao.StudentWithSchoolWithClass;
