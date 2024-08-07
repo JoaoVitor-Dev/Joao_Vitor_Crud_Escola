@@ -1,8 +1,11 @@
 package com.example.joao_vitor_crud_room.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
@@ -21,12 +24,15 @@ public class MainActivity extends AppCompatActivity
 {
     MyDatabase db;
     AllDao allDao;
+    Button btnSchool, btnStudent, btnClasse, btnSair;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+
+        setup();
 
         // Build the MyDatabase instance
         db = Room.databaseBuilder(this, MyDatabase.class, "mydb")
@@ -91,5 +97,33 @@ public class MainActivity extends AppCompatActivity
             );
         }
     }//onCreate
+
+    private void setup()
+    {
+        btnSchool = findViewById(R.id.btnSchool);
+        btnClasse = findViewById(R.id.btnClasse);
+        btnStudent = findViewById(R.id.btnStudent);
+        btnSair = findViewById(R.id.btnSair);
+    }
+
+    public void clicar(View v)
+    {
+        if(v.getId() == R.id.btnSchool)
+        {
+           startActivity((new Intent(MainActivity.this, School_Activity.class)));
+        }
+        if(v.getId() == R.id.btnClasse)
+        {
+            startActivity((new Intent(MainActivity.this, Classe_Activity.class)));
+        }
+        if(v.getId() == R.id.btnStudent)
+        {
+            startActivity((new Intent(MainActivity.this, Student_Activity.class)));
+        }
+        if(v.getId() == R.id.btnSair)
+        {
+            finish();
+        }
+    };
 
 }

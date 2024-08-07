@@ -31,7 +31,6 @@ public class Student {
     @ColumnInfo(name = "classe_id", index = true)
     public Long ClasseId;
 
-
     public Student(){}
 
 
