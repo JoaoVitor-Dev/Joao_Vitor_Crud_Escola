@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.joao_vitor_crud_room.R;
+import com.example.joao_vitor_crud_room.dao.StudentWithSchoolWithClass;
 import com.example.joao_vitor_crud_room.entities.Student;
 
 import java.util.List;
@@ -16,11 +17,11 @@ import java.util.List;
 public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.MyViewHolder>
 {
 
-    private List<Student> studentList;
+    private List<StudentWithSchoolWithClass> studentList;
     private Context context;
     private OnClickListener clickListener;
 
-    public StudentAdapter(List<Student> studentList, Context context, OnClickListener clickListener)
+    public StudentAdapter(List<StudentWithSchoolWithClass> studentList, Context context, OnClickListener clickListener)
     {
         this.studentList = studentList;
         this.context = context;
@@ -39,10 +40,10 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.MyViewHo
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position)
     {
-        Student student = studentList.get(position);
+        StudentWithSchoolWithClass student = studentList.get(position);
 
-        holder.textNome.setText(student.StudentName);
-        holder.textDisciplina.setText(student.ClasseId.toString());
+        holder.textNome.setText(student.student.StudentName);
+        holder.textDisciplina.setText((CharSequence) student.classeList.get(Math.toIntExact(student.student.ClasseId)));
 
         holder.btnDetalhes.setOnClickListener(v -> clickListener.onClick(student));
     }
@@ -55,7 +56,7 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.MyViewHo
 
     public interface OnClickListener
     {
-        void onClick(Student student);
+        void onClick(StudentWithSchoolWithClass student);
     }
 
     static class MyViewHolder extends RecyclerView.ViewHolder

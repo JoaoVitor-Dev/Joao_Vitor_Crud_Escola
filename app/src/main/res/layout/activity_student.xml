@@ -40,15 +40,15 @@
                 android:layout_weight="1"
                 android:textSize="15dp"
                 android:backgroundTint="@color/verde"
-                android:text="Novo estudante"
+                android:text="+ Novo"
                 android:layout_margin="10dp"
                 />
 
     </LinearLayout>
 
 
-
     <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvStudents"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:listitem="@layout/item_list_student"
